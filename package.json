@@ -12,12 +12,24 @@
   "activationEvents": [],
   "main": "./dist/extension.js",
   "contributes": {
-    "commands": [
-      {
-        "command": "lumina-code.helloWorld",
-        "title": "Hello World"
-      }
-    ]
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "lumina-sidebar",
+          "title": "Lumina Code",
+          "icon": "media/lumina-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "lumina-sidebar": [
+        {
+          "type": "webview",
+          "id": "luminaCode.sidebarView",
+          "name": "Generador"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "pnpm run package",
