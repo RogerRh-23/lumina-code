@@ -1,26 +1,18 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import { LuminaPanel } from "./panels/LuminaPanel";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+	// 1. Crear instancia de nuestro panel
+	const provider = new LuminaPanel(context);
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "lumina-code" is now active!');
-
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('lumina-code.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from Lumina Code!');
-	});
-
-	context.subscriptions.push(disposable);
+	// 2. Registrar el proveedor de la vista lateral
+	// El ID "luminaCode.sidebarView" debe coincidir con el package.json
+	context.subscriptions.push(
+		vscode.window.registerWebviewViewProvider(
+			LuminaPanel.viewType,
+			provider
+		)
+	);
 }
 
-// This method is called when your extension is deactivated
-export function deactivate() {}
+export function deactivate() { }
