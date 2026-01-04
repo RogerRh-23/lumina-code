@@ -4,6 +4,10 @@
   "description": "Color palette generator, accessibility scorer & code exporter.",
   "publisher": "RogerDev",
   "version": "1.0.0",
+  "repository": {
+    "tyoe": "git",
+    "url": "https://github.com/RogerRh-23/lumina-code"
+  },
   "engines": {
     "vscode": "^1.107.0"
   },
